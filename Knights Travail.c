@@ -15,9 +15,8 @@ int notvisited(int x, int y, int sol[N][N])
 
 void printSolution(int sol[N][N])
 {
-	int x,y;
-	printf("----------------------------------------------------------------");
-		printf("\n");
+    int x,y;
+	printf("\n----------------------------------------------------------------\n");
 	for (x= 0; x < N; x++) {
 		for (y = 0; y < N; y++)
 			printf("|  %2d  |", sol[x][y]);
@@ -25,6 +24,8 @@ void printSolution(int sol[N][N])
 		printf("----------------------------------------------------------------");
 		printf("\n");
 	}
+	
+	
 }
 
 
@@ -72,6 +73,9 @@ int soveknight(int x, int y, int movei, int sol[N][N], int xMove[N], int yMove[N
 		if (notvisited(next_x, next_y, sol)) {
 			sol[next_x][next_y] = movei;
 			cnt++;
+			if(cnt%1000000==0){
+			    printSolution(sol);
+			}
 			if (soveknight(next_x, next_y, movei + 1, sol, xMove, yMove)== 1)
 				return 1;
 			else{
@@ -94,4 +98,3 @@ int main()
 	
 	return 0;
 }
-
